@@ -1,0 +1,68 @@
+taskKey="com.codegym.games.spaceinvaders.part34"\n\nSpace Invaders (Part 34/34)
+
+Congratulations! The game is done! Run it and see what happens.
+If you have time and motivation, you can improve the game by adding some features of your own.
+For example:
+- add other types of ships;
+- change the number of cannons on the ships;
+- add new types of projectiles;
+- change the scoring system: for example, the more quickly a ship is destroyed, the more points it gives;
+- add bunkers for the player;
+- give bonuses for hitting a certain ship: for example, temporary invincibility, super weapons, etc.;
+- in the event of a win, advance to a harder level;
+- and whatever else you can dream up! :)
+You can publish the finished game on CodeGym. But first, you need to check your solution to make the Publish button active.
+The game will be available to all users in the "Games" section.
+You can also share it with your friends on social networks. Wouldn't it be great if they played your version of Space Invaders?
+After you publish your game, write brief instructions (the possible actions, the keys/buttons required for the game)
+and describe the features of your implementation in the comments.
+
+
+Requirements:
+1.	Run the game and play.
+
+
+Space Invaders (Part 33/34)
+
+At this stage, we'll add scorekeeping to the game. The player gets 15 points for each ordinary ship and 100 points for the boss.
+It will be most convenient to keep score in the checkHit() method, after reworking it a little.
+To store the total score, we'll add a score variable in the SpaceInvadersGame class. We'll display it on the screen using the Game class's setScore method.
+
+
+
+Space Invaders (Part 32/34)
+
+The game is lost not only if the player's ship is destroyed, but also if the enemy fleet reaches the player's ship.
+To determine the coordinates of the lower edge of the enemy fleet, we'll add a getBottomBorder() method.
+If all the enemies are destroyed, the player wins. For convenience, we'll add a getShipCount(), method that will return the number of ships remaining in the enemy fleet.
+If the number is 0, you need to call the stopGameWithDelay() method and call the win() method on the playerShip object.
+This method replaces the player's ship matrix with ShapeMatrix.WIN_PLAYER.
+We'll check the number of ships remaining in the enemy fleet and whether they have reached the player's ship in the check() method.
+
+
+
+Space Invaders (Part 31/34)
+
+Let's make the boss animate continuously. To do this, we need to give the setAnimatedView method an isLoopAnimation parameter responsible
+for indicating whether the animation should loop. This parameter is used to properly set the loopAnimation field.
+If the loopAnimation field is true, the nextFrame method repeats the frames by resetting frameIndex.
+As a result, you need to refactor the parameters in places where the setAnimatedView method is called.
+
+
+
+Space Invaders (Part 30/34)
+
+Now we'll teach the boss to shoot. Depending on the animation frame, the boss will shoot from different cannons.
+We'll also override the kill() method, where we'll set the value of the isAlive field and set the frames of the explosion animation.
+
+
+
+Space Invaders (Part 29/34)
+
+It's time to create the enemy boss. To make him look tougher, we'll add an animation when he moves.
+If the animation changes with every step, it will move too quickly.
+To create the desired effect, you need to change the frame once every 10 steps.
+That's why we need to override the nextFrame method and add a frameCount variable that will count steps.
+
+
+

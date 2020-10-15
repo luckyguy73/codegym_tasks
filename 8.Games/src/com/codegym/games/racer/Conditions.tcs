@@ -1,0 +1,76 @@
+taskKey="com.codegym.games.racer.part28"\n\nRacer (Part 28/28)
+
+Congratulations! The game is done! Run it and see what happens.
+If you have time and motivation, you can improve the game by adding some features of your own.
+For example:
+- make it possible to move onto the shoulder;
+- add turns to the race track;
+- add the ability to switch to different speeds;
+- replace the scoring system: for example, add points only for accelerating;
+- give the player the ability to shoot at other cars;
+- add a wider variety of cars and obstacles;
+- in the event of a win, move to higher levels;
+- and whatever else you can dream up! :)
+
+You can publish the finished game on CodeGym. But first, you need to check your solution to make the Publish button active.
+The game will be available to all users in the "Games" section.
+You can also share it with your friends on social networks. Wouldn't it be great if they played your version of Racer?
+After you publish your game, write brief instructions (the possible actions, the keys/buttons required for the game) and
+describe the features of your implementation in the comments.
+
+
+Requirements:
+1.	Run the game and play.
+
+
+Racer (Part 27/28)
+
+To allow the player to share his or her achievements, we'll add a scoring system to the game.
+The player starts with 3500 points. At each step of the game (40 ms), the number of points decreases by 5 until the player finishes.
+This motivates the player to finish the game faster.
+
+
+
+Racer (Part 26/28)
+
+The player win's when he or she crosses the finish line.
+
+To check whether the player has crossed the finish line, you need to compare his or her y coordinate with the y of the finish line. If the player's y coordinate is less than the finish line's y coordinate, then the line has been crossed.
+In the FinishLine class, create a separate isCrossed(PlayerCar) method to compare the y coordinates.
+You need to call the isCrossed(PlayerCar) method at each step of the game. When the finish line is crossed, the game must be stopped and the player must be informed of the win.
+Implement this in the win() method.
+
+
+
+Racer (Part 25/28)
+
+In this part of the project, we'll add a progress bar to indicate the player's progress through the game.
+
+Note that you have a new class: ProgressBar. Figure out how it works and what it does?
+To store an instance of the ProgressBar class, we'll need a corresponding field in the game's main class. This field will be initialized at the start of a new game.
+The size of the progress bar will depend on the number of cars that the player must pass. This value is passed to the constructor.
+
+Our progress bar will be redrawn with each tick of the game, and the displayed progress will change with the number of passed car obstacles.
+
+
+
+Racer (Part 24/28)
+
+To check the win condition, we'll need to know the actual number of cars that the player has passed.
+To do this, create a passedCarsCount field and corresponding getter in the RoadManager class.
+The value of this field must increase by one after the player passes each car obstacle (removal of a car from the items list).
+
+We'll compare passedCarsCount and RACE_GOAL_CARS_COUNT in the onTurn(int) method.
+If the value of passedCarsCount is greater or equal to RACE_GOAL_CARS_COUNT, then the player has reached the goal and we need to show the finish line.
+
+
+
+Racer (Part 23/28)
+
+In this part of the project, we'll draw and move the finish line. To do this, an instance must be stored in the game's main class and recreated when a new game starts.
+Like the methods of our other objects, the FinishLine class's draw(Game) and move(int) methods will be called every 40 ms, but the results of these method calls will be ignored until the show() method is called.
+Let's also determine the conditions necessary for a win. To make the game challenging and interesting, a win should happen after the player clears 40 car obstacles.
+We'll store this value in the RACE_GOAL_CARS_COUNT constant.
+
+
+
