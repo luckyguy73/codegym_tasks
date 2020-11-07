@@ -1,0 +1,24 @@
+taskKey="com.codegym.task.task20.task2025"\n\nNumber algorithms
+
+
+Suppose the number S consists of M digits. For example, if S = 370, then M (the number of digits) = 3
+Implement the getNumbers method. Among numbers less than N (long), it should
+find all the numbers satisfying the following criterion:
+The number S is equal to the sum of its digits raised in the Mth power
+getNumbers should return all such numbers in ascending order.
+
+Examples of such numbers:
+370 = 3*3*3 + 7*7*7 + 0*0*0
+8208 = 8*8*8*8 + 2*2*2*2 + 0*0*0*0 + 8*8*8*8
+
+The search is allowed to take 10 seconds and use 50 MB of memory.
+The main method is not tested.
+
+
+Requirements:
+1.	A public static long[] getNumbers(long N) method must be created in the Solution class.
+2.	The getNumbers method should not throw exceptions for any input.
+3.	All returned numbers must be strictly less than N.
+4.	The getNumbers method must return the array of numbers that satisfy the task conditions.
+
+
