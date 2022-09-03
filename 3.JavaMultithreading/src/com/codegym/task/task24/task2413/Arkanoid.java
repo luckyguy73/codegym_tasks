@@ -10,7 +10,7 @@ public class Arkanoid {
     private int width;
     private int height;
 
-    private ArrayList<Brick> bricks = new ArrayList<Brick>();
+    private final ArrayList<Brick> bricks = new ArrayList<>();
     private Ball ball;
     private Paddle paddle;
 

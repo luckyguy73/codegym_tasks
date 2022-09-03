@@ -4,7 +4,7 @@ taskKey="com.codegym.task.task23.task2301"\n\nPrevent inheritance
 Prevent anyone from inheriting the Listener class.
 
 
-Requirements:
+Требования:
 1.	The Listener class must be inside the Solution class.
 2.	The Listener class must be public.
 3.	The Listener class must be static.

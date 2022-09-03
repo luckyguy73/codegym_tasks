@@ -13,7 +13,6 @@ public class Solution {
         public String toString() {
             return "test class";
         }
-
     }
 
     public static void main(String[] args) {
