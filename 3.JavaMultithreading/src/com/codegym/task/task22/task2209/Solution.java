@@ -6,48 +6,40 @@ Make a word chain
 
 import java.io.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Solution {
+
     public static void main(String[] args) throws IOException {
         List<String> words = new ArrayList<>();
         try (BufferedReader buff = new BufferedReader(new InputStreamReader(System.in));
              BufferedReader read = new BufferedReader(new FileReader(buff.readLine()))) {
             while (read.ready()) words.addAll(Arrays.asList(read.readLine().split("\\s+")));
         }
-        StringBuilder result = getLine(words.toArray(new String[0]));
-        System.out.println(result.toString());
+
+        System.out.println(getLine(words.toArray(new String[0])));
     }
 
     public static StringBuilder getLine(String... words) {
-        StringBuilder sb = new StringBuilder();
-        if (words.length < 1) return sb;
+        Comparator<String> stringLength = Comparator.comparing(String::length).reversed();
+        TreeSet<String> extract = iterations("", Arrays.asList(words), new TreeSet<>(stringLength));
 
-        List<String> wordList = new ArrayList<>(Arrays.asList(words));
-        Set<Character> set = new HashSet<>();
-        wordList.forEach(f -> set.add(f.toLowerCase().charAt(f.length() - 1)));
-
-        for (String word : wordList) {
-            if (!set.contains(word.toLowerCase().charAt(0))) {
-                sb.append(word);
-                wordList.remove(word);
-                break;
-            }
-        }
-
-        if (sb.length() < 1) {
-            sb.append(wordList.get(0));
-            wordList.remove(0);
-        }
-
-        for (int i = 0; i < wordList.size(); ++i) {
-            String s = wordList.get(i);
-            if (s.toLowerCase().charAt(0) == sb.charAt(sb.length() - 1)) {
-                sb.append(" ").append(s);
-                wordList.remove(s);
-                i = -1;
-            }
-        }
-
-        return sb;
+        return new StringBuilder(extract.stream().findFirst().orElse(""));
     }
+
+    public static TreeSet<String> iterations(String base, List<String> words, TreeSet<String> upshot) {
+        for (String word : words) {
+            if (!base.isEmpty() && !isEqual(base, word)) continue;
+            String concat = base.isEmpty() ? word : String.format("%s %s", base, word);
+            upshot.add(concat);
+            if (words.size() > 1) iterations(concat, words.stream().filter(e -> !e.equals(word)).collect(Collectors.toList()), upshot);
+        }
+
+        return upshot;
+    }
+
+    public static boolean isEqual(String base, String word) {
+        return base.toLowerCase().charAt(base.length() - 1) == word.toLowerCase().charAt(0);
+    }
+
 }
