@@ -1,0 +1,118 @@
+taskKey="com.codegym.task.task29.task2909.big15"\n\nRefactoring (part 15)
+
+
+Great. You&#39;ve mastered basic refactoring techniques: Pull up a field, pull up a method,
+Encapsulate a collection, extract a subclass, pull up the body of a constructor, push down
+a method, push down a field, extract an interface, collapse a hierarchy, replace inheritance
+with delegation, extract a superclass, replace a simple field with an object, create
+a template method, replace delegation with inheritance, rename a method,
+replace a parameter with a set of specialized methods, add a parameter,
+remove a parameter, separate a query from a modifier, parameterize of a method,
+pass an entire object, replace a parameter with a method call, replace parameters
+with an object, remove a setter, hide a method, replace an exception with a check,
+remove a flag, self-encapsulate a field, replace an array field with an object,
+encapsulate a field, replace a type code with a class, replace a constructor with a factory
+method, replace an error code with an exception, decompose a conditional expression,
+combine conditional expressions, combine duplicate fragments in conditional
+expressions, replace a magic number with a symbolic constant, replace a conditional
+expression with polymorphism, extract a method, inline a method, move
+a method, split a variable, eliminate assignments to arguments, move
+a field, extract a class, inline a class and hide delegation.
+
+Of course, there are others. Be sure to check them out. It&#39;s very important not only
+to be able to apply refactoring techniques, but also to recognize the places where they should be applied. As
+you gain experience, you&#39;ll find it easier and easier to spot them. In his book
+&quot;Refactoring: Improving the Design of Existing Code&quot;, Martin Fowler calls such places &quot;smelly code&quot;.
+Be sure to read about the basic types of &quot;smelly code&quot;. I want your
+code to smell good!
+
+
+Требования:
+1.	The test is always performed.
+
+
+Refactoring (part 15)
+
+
+14.1.	Move a field. Replace the isAnnaMale and isRomanMale fields with a male field in the appropriate class.
+Add a setter and getter for the new field (when choosing method names, consider the field type).
+14.2.	Extract a class.
+14.2.1.	Add an Address class to the user package.
+14.2.2.	Move the country, city, and house fields to a new class.
+14.2.3.	Add setters and getters for them.
+14.2.4.	Rewrite the User class using an Address field.
+14.3.	Inline a class. The House class does almost nothing. Get rid of it.
+14.4.	Hide delegation.
+14.4.1.	Add a getBoss() method to the User class.
+14.4.2.	Rewrite the UserHelper class&#39;s getBossName(User User) method.
+
+
+
+Refactoring (part 15)
+
+
+Understand the code in the user package.
+13.1.	Extract a method. Add a printInfo() method that displays the first and last name
+on the console, formatted as follows
+
+First name: Jason
+Last name: Slater
+
+Replace the duplicate code in printUsers() with a method call.
+13.2.	Inline a method. Get rid of the ageLessThan16() method.
+13.3.	Move a method. Move the printInfo() and printAdditionalInfo() methods to the User class.
+13.4.	Split a variable. The age variable in the calculateAverageAge() method
+is used for different intermediate values. Rewrite the method so that it doesn&#39;t use this variable.
+13.5.	Eliminate assignments to arguments. Rewrite the calculateRate() method so that it does not
+try to change the method arguments, but instead simply returns a calculated value.
+
+
+
+Refactoring (part 15)
+
+
+12.1.	Combine conditional expressions.
+12.1.1.	In the Car class, add a private method that indicates whether passengers can be carried:
+boolean canPassengersBeCarried(). The method should return true if
+the driver is available (isDriverAvailable) and there is fuel.
+12.1.2.	Rewrite the getNumberOfPassengersThatCanBeCarried() method by combining the conditional
+expressions (use the canPassengersBeCarried() method).
+12.2.	Combine duplicate conditional fragments. Rewrite the
+startMoving() method so that it does not have duplicate function calls.
+12.3.	Replace a magic number with a symbolic constant. Replace the magic numbers in the
+getMaxSpeed() method with constants: MAX_TRUCK_SPEED,
+MAX_SEDAN_SPEED, and MAX_CABRIOLET_SPEED.
+12.4.	Replace a conditional expression with polymorphism.
+12.4.1.	Override the getMaxSpeed​​() method in subclasses, and get rid of the conditional expression.
+12.4.2.	The Car class&#39;s getMaxSpeed() method is abstract.
+
+
+
+Refactoring (part 15)
+
+
+11.1.	Replace an error code with an exception. Rewrite the fill(double numberOfGallons)
+method to throw an Exception if there is an error.
+11.2.	Decompose a conditional expression.
+11.2.1.	Add and implement a method in the Car class that determines whether the passed date belongs to
+summer: boolean isSummer(Date date , Date summerStart, Date summerEnd).
+11.2.2.	Add and implement a method that calculates fuel consumption in winter: double
+getWinterConsumption(int length).
+11.2.3.	Add and implement a method that calculates fuel consumption in summer: double
+getSummerConsumption(int length).
+11.2.4.	Rewrite the getTripConsumption() method using the new methods.
+
+
+
+Refactoring (part 15)
+
+
+Understand the code in the car package.
+10.1.	Replace a constructor with a factory method.
+10.1.1.	Declare Truck, Sedan, and Cabriolet classes that inherit Car.
+10.1.2.	Add constructors that have an int numberOfPassengers constructors.
+10.1.3.	Add a static Car create(int type, int numberOfPassengers) factory method to the Car class and implement it.
+10.1.4.	Change the visibility of the Car class constructor.
+
+
+
